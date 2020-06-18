@@ -1,0 +1,11 @@
+.banner-container{
+display: block;
+width: 40%;
+margin : 0 auto;
+font-size: 20px;
+}
+
+.banner-layer{
+    padding: 15px;
+    border: 2px solid black;
+}
