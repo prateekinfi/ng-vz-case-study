@@ -39,10 +39,10 @@ const routes: Routes = [
       )
   },
   {
-    path: "dynamic-divs",
+    path: "dynamic-loading",
     loadChildren: () =>
-      import("./dynamic-divs/dynamic-divs.module").then(
-        m => m.DynamicDivsModule
+      import("./dynamic-loading/dynamic-loading.module").then(
+        m => m.DynamicLoadingModule
       )
   },
   { path: '', redirectTo: '/floating-banner', pathMatch: 'full'},
