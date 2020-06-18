@@ -1,4 +1,4 @@
-import { TimerService } from '../timer.service';
+import { TimerService } from '../../timer.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -1,8 +1,8 @@
 import { RouterModule } from '@angular/router';
-import { CountDownDisplayComponent } from './count-down-display/count-down-display.component';
-import { CountDownTimerComponent } from './count-down-timer/count-down-timer.component';
-import { CountsComponent } from './counts/counts.component';
-import { LogComponent } from './log/log.component';
+import { CountDownDisplayComponent } from './components/count-down-display/count-down-display.component';
+import { CountDownTimerComponent } from './components/count-down-timer/count-down-timer.component';
+import { CountsComponent } from './components/counts/counts.component';
+import { LogComponent } from './components/log/log.component';
 
 import { NgModule } from '@angular/core';
 import { InputOutputSharingComponent } from './components/input-output-sharing.component';

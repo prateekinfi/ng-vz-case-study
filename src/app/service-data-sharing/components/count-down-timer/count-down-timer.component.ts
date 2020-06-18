@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TimerService } from '../timer.service';
+import { TimerService } from '../../timer.service';
 import { timer } from 'rxjs/internal/observable/timer';
 import { takeWhile, tap } from 'rxjs/operators';
 
