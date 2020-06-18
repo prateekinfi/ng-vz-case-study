@@ -1,0 +1,14 @@
+.component-container.top{
+    border: 1px solid black;
+}
+.component-container{
+    display: inline-block;
+    width: 45%;
+    min-height: 200px; 
+    margin: 10px;
+    overflow: auto;
+}
+.container{
+    text-align: center;
+    border: 1px solid black;
+}

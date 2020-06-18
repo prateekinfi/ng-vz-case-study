@@ -1,0 +1,11 @@
+li{
+list-style: none;
+}
+ul{
+    padding: 0;
+}
+.counts-container{
+    text-align: center;
+    font-size: 22px;
+    padding:50px;
+}

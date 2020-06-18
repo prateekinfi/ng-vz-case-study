@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="component-container top">
+        <app-count-down-display [displayvalue]="display"></app-count-down-display>
+    </div>
+    <div class="component-container top">
+        <app-count-down-timer (evtemitter)="update($event)" (displayemitter)="updateDisplay($event)">
+        </app-count-down-timer>
+    </div>
+    <div class="component-container">
+        <app-log [logvalue]="log"></app-log>
+    </div>
+    <div class="component-container">
+        <app-counts [startcountvalue]="startcount" [pausecountvalue]="pausecount"></app-counts>
+    </div>
+</div>

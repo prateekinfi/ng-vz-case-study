@@ -1,0 +1,14 @@
+li {
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+}
+
+.logs-container {
+    text-align: center;
+    font-size: 12px;
+    min-height: 200px;
+    padding: 10px;
+}

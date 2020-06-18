@@ -1,0 +1,9 @@
+<div  class="container">
+    <input type="number" #timer>
+    <button (click)="updateState(timer.value)">
+        start/pause
+    </button>
+    <button (click)="reset();timer.value=0;">
+        reset
+    </button>
+</div>
