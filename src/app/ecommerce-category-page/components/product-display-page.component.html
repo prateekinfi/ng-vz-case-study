@@ -1,1 +1,27 @@
-<p>product-display-page works!</p>
+<div class="pdp-header container mb-4 mt-4">
+  <div class="btn-group">
+    <button type="button" (click)="switchView(true)" class="btn btn-light">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA6ElEQVRIie2UPQ7CMAyFPxATG4iduRNInTkEHAJO0CuwcAMOwQHakTWdOzNTGLuWIY4waflTKQs8yUr8/GQnsmX4401MgQQwwFw4oywQ0xyiNUAMTB4VSIBSbClcqSwU0xyidX6sE3a9AoMXfvkMQ+30vOAaGMl9L+dKxQ81nNM6Lm/4wGYwNO+BUfkqPfg4Wi/Q8fwA6Mv9gG1YqOKZ0jmk2MEYi18oXfs/8PFv8vfhT9GC21WRce0FwE7pHLbYqZqJnytdBa03+Xyv8hs4acffphGwwa7co3Cpihc1HKJNJXn0gUf+Ei6efVblIGOdfgAAAABJRU5ErkJggg==" />
+    </button>
+    <button type="button" (click)="switchView(false)" class="btn btn-light">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAALUlEQVRIiWNgGAUEACMa/z+R6olVx8BEqotIBaMWjFowCkZz8qgFoxaMAqIAAEVwBB/odEGkAAAAAElFTkSuQmCC" /></button>
+  </div>
+
+  <div class="btn-group ml-2 price-sort">
+    <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+      Sort by Price
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a class="dropdown-item" href="#">Low to High</a>
+      <a class="dropdown-item" href="#">High to Low</a>
+    </div>
+  </div>
+</div>
+
+<ul class="container">
+  <li *ngFor="let i of numbers" [ngClass]="{'product-grid':grid==true,'product-list':grid==false}">
+    <app-product></app-product>
+  </li>
+</ul>

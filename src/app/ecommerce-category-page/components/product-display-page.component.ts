@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDisplayPageComponent implements OnInit {
 
-  constructor() { }
+  numbers: Array<number>;
+  grid: boolean = true;
+  constructor() {
+    this.numbers = Array(40).fill(0).map((x, i) => i);
+  }
 
   ngOnInit(): void {
   }
 
+  switchView(val) {
+    this.grid = val;
+  }
 }

@@ -5,3 +5,9 @@ li {
     display: inline-block;
     margin: 0px 20px;
 }
+ul{
+    padding: 0;
+}
+.container{
+    text-align: center;
+}
