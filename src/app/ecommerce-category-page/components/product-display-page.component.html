@@ -1,4 +1,4 @@
-<div class="pdp-header container mb-4 mt-4">
+<div class="p-header container mb-4 mt-4">
   <div class="btn-group">
     <button type="button" (click)="switchView(true)" class="btn btn-light">
       <img
@@ -13,15 +13,17 @@
     <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
       Sort by Price
     </button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" href="#">Low to High</a>
-      <a class="dropdown-item" href="#">High to Low</a>
+    <div class="dropdown-menu">
+      <button class="dropdown-item" (click)="sortProductList(true)">Low to High</button>
+      <button class="dropdown-item" (click)="sortProductList(false)">High to Low</button>
     </div>
   </div>
+  
 </div>
 
+
 <ul class="container">
-  <li *ngFor="let i of numbers" [ngClass]="{'product-grid':grid==true,'product-list':grid==false}">
-    <app-product></app-product>
+  <li *ngFor="let prod of productList" [ngClass]="{'product-grid':grid==true,'product-list':grid==false}">
+    <app-product [inputProduct]='prod'></app-product>
   </li>
 </ul>

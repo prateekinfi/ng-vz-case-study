@@ -1,7 +1,14 @@
+
+
     <div class="card">
+      <img class="card-img-top" src="{{product.image}}" height="250" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">{{product.model}}</h5>
+        <p class="card-text">{{product.make}}</p>
       </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><b>Price :</b> {{product.price | currency:'INR'}}</li>
+        <li class="list-group-item"><b>Model Year :</b> {{product.model_year}}</li>
+        <li class="list-group-item"><b>Color :</b> {{product.color}}</li>
+      </ul>
     </div>
