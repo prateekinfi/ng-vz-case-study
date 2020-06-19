@@ -1,3 +1,5 @@
+import { Car } from './../../models/Car';
+import { CarDataService } from './../car-data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,13 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDisplayPageComponent implements OnInit {
 
-  numbers: Array<number>;
+  productList:Array<Car> = [];
   grid: boolean = true;
-  constructor() {
-    this.numbers = Array(40).fill(0).map((x, i) => i);
+
+   constructor(carservice :CarDataService) {
+   carservice.getCarDetails()
+  .subscribe(data => {
+      this.productList=data;
+   });
   }
 
   ngOnInit(): void {
+  }
+
+  sortProductList(order){
+    this.productList.sort((productA,productB)=>{
+      if(order)
+        return productA.price - productB.price;
+        else
+        return productB.price - productA.price;
+    });
   }
 
   switchView(val) {
