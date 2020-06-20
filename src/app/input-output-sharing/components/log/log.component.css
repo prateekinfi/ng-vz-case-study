@@ -4,6 +4,8 @@ li {
 
 ul {
     padding: 0;
+    height: 150px;
+    overflow-y: overlay;
 }
 
 .logs-container {

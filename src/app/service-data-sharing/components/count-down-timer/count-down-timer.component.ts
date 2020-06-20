@@ -12,9 +12,10 @@ export class CountDownTimerComponent implements OnInit {
 
   constructor(private service: TimerService) { }
   isTimerActive = false;
-  startvalue = 0;
-  pausevalue = 0;
+  startvalue;
+  pausevalue;
   flag = 0;
+  
   ngOnInit(): void {
     this.flag = 0;
   }

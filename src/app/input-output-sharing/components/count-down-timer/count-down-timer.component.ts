@@ -12,7 +12,9 @@ export class CountDownTimerComponent implements OnInit {
 
   @Output() evtemitter;
   @Output() displayemitter;
-
+  startvalue;
+  pausevalue;
+  
   isTimerActive = false;
   isReset: boolean = false;
 
