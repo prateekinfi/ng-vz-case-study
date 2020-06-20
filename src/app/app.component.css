@@ -3,11 +3,22 @@
 }
 li {
     display: inline-block;
-    margin: 0px 20px;
+    padding: 10px;
 }
 ul{
     padding: 0;
+    margin: 0;
 }
 .container{
     text-align: center;
+}
+.link-active{
+    background: rgb(247, 247, 247);
+}
+hr{
+    padding:0;
+    margin:0;
+}
+.nav-container{
+    margin: 20px 0px
 }
