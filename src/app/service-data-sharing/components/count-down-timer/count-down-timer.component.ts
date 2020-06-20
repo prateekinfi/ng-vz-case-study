@@ -40,15 +40,13 @@ export class CountDownTimerComponent implements OnInit {
     this.isTimerActive = !this.isTimerActive;
 
     if (this.isTimerActive && this.flag == 0) {
-      timervalue = this.startvalue;
       this.flag = 1;
     }
     else if (this.isTimerActive && this.flag == 1) {
       this.startvalue = this.pausevalue;
-      timervalue = this.startvalue;
-    } else {
-      this.pausevalue = timervalue;
     }
+    timervalue = this.startvalue;
+
     this.subscription = timer(0, 1).pipe(
       takeWhile(() => {
         return (timervalue > 0 && this.isTimerActive && !this.service.timer.reset)

@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CountDownDisplayComponent } from './components/count-down-display/count-down-display.component';
 import { CountDownTimerComponent } from './components/count-down-timer/count-down-timer.component';
@@ -19,7 +20,7 @@ import { CommonModule } from '@angular/common';
     imports: [
         CommonModule,
         RouterModule.forChild([{ path: '', component: InputOutputSharingComponent }]),
-
+        FormsModule
     ],
     exports: [
         LogComponent,

@@ -14,57 +14,103 @@ export class CountDownTimerComponent implements OnInit {
   @Output() displayemitter;
   startvalue;
   pausevalue;
-//  timerInputValue;
-  
+  timerInputValue;
+  flag = 0;
+  subscription;
   isTimerActive = false;
   isReset: boolean = false;
 
-  constructor() { 
+  constructor() {
     this.evtemitter = new EventEmitter();
     this.displayemitter = new EventEmitter();
-
   }
 
   ngOnInit(): void {
   }
 
-  updateState(timervalue :number){
-    //this.timerInputValue=null;
-    this.isTimerActive=!this.isTimerActive;
-   this.isReset = false;
-   timer(0,1).pipe(
-      takeWhile(() => {return (timervalue > 0 && this.isTimerActive && !this.isReset)}),
-      tap(()=>timervalue--)
-    ).subscribe(()=>{
-      //console.log(timervalue);
-      this.displayemitter.emit(timervalue);
-    })
+  updateState() {
+    if (this.flag === 0 && this.timerInputValue == null) {
+      alert('Enter a value in the timer..')
+      return
+    }
+
+    this.isReset = false;
+
+    let timervalue;
+
+    if (this.timerInputValue) {
+      timervalue = this.timerInputValue;
+      this.startvalue = this.timerInputValue;
+      this.timerInputValue = null;
+      console.log(timervalue);
+      
+    }
+
+    this.isTimerActive = !this.isTimerActive;
+
+
+    if (this.isTimerActive && this.flag == 0) {
+      this.flag = 1;
+    }
+    else if (this.isTimerActive && this.flag == 1) {
+      this.startvalue = this.pausevalue;
+    }
+    timervalue = this.startvalue;
+
+    this.subscription = timer(0, 1).pipe(
+      takeWhile(() => { return (timervalue > 0 && this.isTimerActive && !this.isReset) }),
+      tap(() => timervalue--, e => console.log(e), () => {
+        this.pausevalue = timervalue;
+        console.log('herer' + this.pausevalue);
+        this.subscription.unsubscribe();
+      }
+      )).subscribe(() => {
+        //console.log(timervalue);
+        this.displayemitter.emit(timervalue);
+        if (timervalue == 0) {
+          this.isTimerActive = false;
+          this.flag = 0;
+          this.startvalue = 0;
+          this.pausevalue = 0;
+        }
+      })
 
     let action = (this.isTimerActive) ? "started" : "paused";
-    var d = new Date();
-    var time = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
-    d.getHours() + ":" + d.getMinutes();
     let count = (this.isTimerActive) ? "startcount" : "pausecount";
-    let eventObj ={
+
+    let event = {
       startcount: 0,
       pausecount: 0,
-      log: `${action} at ${time}`
+      log: `${action} at ${this.getFormatedDate()}`
     };
-    eventObj[count]++
+    event[count]++
 
-    this.evtemitter.emit(eventObj);
+    this.evtemitter.emit(event);
 
   }
-  
-  reset(){
-    this.isReset = true; 
+
+  reset() {
+    this.isReset = true;
+    this.timerInputValue = null;
+    this.isTimerActive = false;
+    this.subscription.unsubscribe();
+    this.flag = 0;
+    this.startvalue = 0;
+    this.pausevalue = 0;
+
     this.displayemitter.emit(0);
+
     this.evtemitter.emit({
       startcount: 'reset',
       pausecount: 'reset',
-      log: `reset`
+      log: `reset at ${this.getFormatedDate()}`
     });
+  }
 
-
+  getFormatedDate() {
+    var date = new Date();
+    var time = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() + " " +
+      date.getHours() + ":" + date.getMinutes();
+    return time;
   }
 }

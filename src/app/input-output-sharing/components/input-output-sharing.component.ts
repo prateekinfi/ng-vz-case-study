@@ -18,7 +18,6 @@ export class InputOutputSharingComponent {
     this.pausecount= target.pausecount;
   }
   updateDisplay(target){
-    
     this.display= target;
   }
 }

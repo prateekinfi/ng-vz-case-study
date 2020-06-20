@@ -1,22 +1,20 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-log',
   templateUrl: './log.component.html',
   styleUrls: ['./log.component.css']
 })
-export class LogComponent {
+export class LogComponent implements OnChanges {
 
-  logs : string[]= [];
-  @Input() 
-  logvalue :string;
+  logs: string[] = [];
+
+  @Input() logvalue: string;
 
   constructor() { }
-  ngOnChanges(changes:SimpleChanges){
-   if(changes.logvalue.currentValue == 'reset')
-   this.logs = [];
-   else if(changes.logvalue.currentValue)
-   this.logs.push(changes.logvalue.currentValue);
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+    this.logs.push(changes.logvalue.currentValue);
   }
 
 
