@@ -13,7 +13,7 @@ export class LogComponent implements OnChanges {
 
   constructor() { }
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
+    if(changes.logvalue.currentValue)
     this.logs.push(changes.logvalue.currentValue);
   }
 

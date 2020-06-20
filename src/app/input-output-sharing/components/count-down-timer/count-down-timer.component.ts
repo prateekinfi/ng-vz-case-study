@@ -41,9 +41,7 @@ export class CountDownTimerComponent implements OnInit {
     if (this.timerInputValue) {
       timervalue = this.timerInputValue;
       this.startvalue = this.timerInputValue;
-      this.timerInputValue = null;
-      console.log(timervalue);
-      
+      this.timerInputValue = null;      
     }
 
     this.isTimerActive = !this.isTimerActive;
@@ -61,11 +59,9 @@ export class CountDownTimerComponent implements OnInit {
       takeWhile(() => { return (timervalue > 0 && this.isTimerActive && !this.isReset) }),
       tap(() => timervalue--, e => console.log(e), () => {
         this.pausevalue = timervalue;
-        console.log('herer' + this.pausevalue);
         this.subscription.unsubscribe();
       }
       )).subscribe(() => {
-        //console.log(timervalue);
         this.displayemitter.emit(timervalue);
         if (timervalue == 0) {
           this.isTimerActive = false;

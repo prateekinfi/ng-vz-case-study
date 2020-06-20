@@ -53,7 +53,6 @@ export class CountDownTimerComponent implements OnInit {
       }),
       tap(() => timervalue--, e => console.log(e), () => {
         this.pausevalue = timervalue;
-        console.log('herer' + this.pausevalue);
         this.subscription.unsubscribe();
       }
       )
