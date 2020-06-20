@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable()
 export class TimerService {
   timer = {
     logs: [],
@@ -16,7 +14,7 @@ export class TimerService {
   constructor() { }
 
   reset(){
-    this.timer.logs=[];
+    // this.timer.logs=[];
     this.timer.startCount=0;
     this.timer.pauseCount=0;
     this.timer.displayValue=0;
@@ -24,11 +22,12 @@ export class TimerService {
     this.emitData();
   }
   updateLogs(isTimerActive) {
+    let action = (isTimerActive) ? "started" : "paused";
+    action = (this.timer.reset) ? 'reset' : action;
     this.timer.reset=false;
     var d = new Date();
     var time = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
     d.getHours() + ":" + d.getMinutes();
-    let action = (isTimerActive) ? "started" : "paused";
     this.timer.logs.push(`${action} at ${time}`);
     this.emitData();
   }

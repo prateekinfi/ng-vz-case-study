@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { TimerService } from '../../timer.service';
 import { timer } from 'rxjs/internal/observable/timer';
 import { takeWhile, tap } from 'rxjs/operators';
@@ -10,26 +10,50 @@ import { takeWhile, tap } from 'rxjs/operators';
 })
 export class CountDownTimerComponent implements OnInit {
 
-  constructor(private service : TimerService) { }
+  constructor(private service: TimerService) { }
   isTimerActive = false;
-
-
+  startvalue = 0;
+  pausevalue = 0;
+  flag = 0;
   ngOnInit(): void {
-  }
-  updateState(timervalue){
-    this.isTimerActive=!this.isTimerActive;
-
-   timer(0,1).pipe(
-      takeWhile(() => {return (timervalue > 0 && this.isTimerActive && !this.service.timer.reset)}),
-      tap(()=>timervalue--)
-    ).subscribe(()=>{
-      this.service.updateDisplay(timervalue);
-    })
-    this.service.updateCounts(this.isTimerActive);
-    this.service.updateLogs(this.isTimerActive);
+    this.flag = 0;
   }
 
-  reset(){
+  updateState(timervalue) {
+    if (timervalue > 0) {
+      this.isTimerActive = !this.isTimerActive;
+
+      if (this.isTimerActive && this.flag == 0) {
+        this.startvalue = timervalue;
+        this.flag = 1;
+      } else if (this.isTimerActive && this.flag == 1) {
+        this.startvalue = this.service.timer.displayValue;
+      }
+      else if (!this.isTimerActive) {
+        this.pausevalue = this.service.timer.displayValue;
+      }
+
+      timer(0, 1).pipe(
+        takeWhile(() => { return (timervalue > 0 && this.isTimerActive && !this.service.timer.reset) }),
+        tap(() => { timervalue--; })
+      ).subscribe(() => {
+        this.service.updateDisplay(timervalue);
+        if (timervalue == 0) {
+          this.isTimerActive = !this.isTimerActive;
+        }
+      });
+      this.service.updateCounts(this.isTimerActive);
+      this.service.updateLogs(this.isTimerActive);
+    }
+  }
+
+  reset() {
     this.service.reset();
+    this.service.updateLogs(this.isTimerActive);
+    this.isTimerActive = false;
+    this.flag = 0;
+    this.startvalue = 0;
+    this.pausevalue = 0;
+    this.service.timer.reset = true;
   }
 }

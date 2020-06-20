@@ -1,9 +1,17 @@
-<div  class="container">
-    <input type="number" #timer>
-    <button (click)="updateState(timer.value)">
-        start/pause
-    </button>
-    <button (click)="reset();timer.value=0;">
-        reset
-    </button>
+<div class="container">
+    <div class="input-group">
+        <input type="number" class="form-control" #timer>
+        <div class="input-group-append">
+            <button class="btn btn-light ml-1" (click)="updateState(timer.value)">
+                start/pause
+            </button>
+            <button class="btn btn-light ml-1" (click)="reset();timer.value=0;">
+                reset
+            </button>
+        </div>
+    </div>
+    <br><br>
+    <h6>Started at : {{startvalue}}</h6>
+    <h6> Paused at : {{pausevalue}}</h6>
+
 </div>
