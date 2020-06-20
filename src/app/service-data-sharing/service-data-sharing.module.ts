@@ -5,7 +5,8 @@ import { CountsComponent } from './components/counts/counts.component';
 import { LogComponent } from './components/log/log.component';
 
 import { NgModule } from '@angular/core';
- import { RouterModule } from '@angular/router';
+import {FormsModule} from '@angular/forms'
+import { RouterModule } from '@angular/router';
 import { ServiceDataSharingComponent } from './components/service-data-sharing.component';
 import { CommonModule } from '@angular/common';
 
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
     imports: [
         CommonModule,
         RouterModule.forChild([{ path: '', component: ServiceDataSharingComponent }]),
+        FormsModule
     ],
     providers:[
         TimerService

@@ -1,11 +1,11 @@
 <div class="container">
     <div class="input-group">
-        <input type="number" class="form-control" #timer>
+        <input type="number" class="form-control" [(ngModel)]="timerInputValue" #timer="ngModel">
         <div class="input-group-append">
-            <button class="btn btn-light ml-1" (click)="updateState(timer.value)">
+            <button class="btn btn-light ml-1" (click)="updateState()">
                 start/pause
             </button>
-            <button class="btn btn-light ml-1" (click)="reset();timer.value=0;">
+            <button class="btn btn-light ml-1" (click)="reset()">
                 reset
             </button>
         </div>

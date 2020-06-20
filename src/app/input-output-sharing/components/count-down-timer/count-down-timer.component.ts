@@ -14,6 +14,7 @@ export class CountDownTimerComponent implements OnInit {
   @Output() displayemitter;
   startvalue;
   pausevalue;
+//  timerInputValue;
   
   isTimerActive = false;
   isReset: boolean = false;
@@ -28,9 +29,9 @@ export class CountDownTimerComponent implements OnInit {
   }
 
   updateState(timervalue :number){
+    //this.timerInputValue=null;
     this.isTimerActive=!this.isTimerActive;
    this.isReset = false;
-    console.log('here');
    timer(0,1).pipe(
       takeWhile(() => {return (timervalue > 0 && this.isTimerActive && !this.isReset)}),
       tap(()=>timervalue--)
