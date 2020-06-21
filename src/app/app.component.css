@@ -12,8 +12,9 @@ ul{
 .container{
     text-align: center;
 }
-.link-active{
+.link-active, .link-active a{
     background: rgb(247, 247, 247);
+    color: rgb(23, 0, 124);
 }
 hr{
     padding:0;
@@ -24,4 +25,7 @@ hr{
 }
 .app-container{
     margin-bottom: 20px;
+}
+a{
+    text-decoration: none;
 }

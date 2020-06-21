@@ -1,1 +1,15 @@
-<p>marks-table works!</p>
+<div class="container">
+    <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let property of studentProperties;index as i;" (click)="sortTable(i)">{{property}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of displayList">
+            <td *ngFor="let property of studentProperties">{{student[property]}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<!-- {{ sortOrderTracker | json}} -->
